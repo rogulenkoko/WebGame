@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <link rel="stylesheet" type="text/css" href="style.css">
+       <script src="scripts/cookies.js"></script> 
+       
+   </head>
+    <body>
+        <div id="fail">
+            <span>Вы проиграли!</span>
+            <br>
+            <span>Ваши очки: </span><span id="score"></span>
+            <br>
+            <span>Рекорд: </span><span id="record"></span>
+            <br><br>
+            <a href="/index.html"><img width="30px" src="replay.png"></a>
+        </div>
+        <script>
+            var score = readCookie("score");
+            document.getElementById("score").innerText = score;
+            var record = readCookie("record");
+            document.getElementById("record").innerText = record;
+       </script>
+    </body>
+</html>

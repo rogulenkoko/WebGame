@@ -1,0 +1,31 @@
+#canvasId {
+    margin-left: 15%;
+}
+
+#score-div{
+    position: absolute;
+    width: 170px;
+    height: 100px;
+    right: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#score{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#fail{
+    position: absolute;
+    width: 420px;
+    height: 240px;
+    left: 33%;
+    top:5%;
+    border: 1px solid pink;
+    background-color:cornsilk;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+}
+
