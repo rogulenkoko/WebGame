@@ -1,12 +1,11 @@
-
 var gameManager = {
     factory: {},
     entities: [],
     player1: null,
     player2: null,
     loadAll: function() {
-        mapManager.loadMap("map.json");
-        spriteManager.loadAtlas("sprites.json", "spritesheet.png");
+        mapManager.loadMap("map/map.json");
+        spriteManager.loadAtlas("map/sprites.json", "map/spritesheet.png");
         gameManager.factory['Player1'] = Player1;
         gameManager.factory['Player2'] = Player2;
         gameManager.factory['BarrierL'] = BarrierL;
@@ -16,7 +15,6 @@ var gameManager = {
         eventManager.setup(canvas);
     },
     play: function(){
-        
         setInterval(updateWorld, 50);
     },
     update: function() {
@@ -48,48 +46,55 @@ function updateWorld(){
 
 function checkEvent(){
     if(eventManager.action["left1"]){
-        if(gameManager.player1.pos_x == 673){
+        if(gameManager.player1.pos_x == 674){
             var timer1 = setInterval(()=>{
-                gameManager.player1.pos_x-=1;
-                if(gameManager.player1.pos_x == 445) clearInterval(timer1);
-            },1)
+                gameManager.player1.pos_x-=2;
+                if(gameManager.player1.pos_x == 446) clearInterval(timer1);
+            },2)
         }
         eventManager.action["left1"]=false;
     }
 
     if(eventManager.action["right1"]){
-        if(gameManager.player1.pos_x == 445){
+        if(gameManager.player1.pos_x == 446){
             var timer1 = setInterval(()=>{
-                gameManager.player1.pos_x+=1;
-                if(gameManager.player1.pos_x == 673) clearInterval(timer1);
-            },1)
+                gameManager.player1.pos_x+=2;
+                if(gameManager.player1.pos_x == 674) clearInterval(timer1);
+            },2)
         }
         eventManager.action["right1"]=false;
     }
 
     if(eventManager.action["left2"]){
-        if(gameManager.player2.pos_x == 295){
+        if(gameManager.player2.pos_x == 296){
             var timer1 = setInterval(()=>{
-                gameManager.player2.pos_x-=1;
-                if(gameManager.player2.pos_x == 59) clearInterval(timer1);
-            },1)
+                gameManager.player2.pos_x-=2;
+                if(gameManager.player2.pos_x == 60) clearInterval(timer1);
+            },2)
         }
         eventManager.action["left2"]=false;
     }
 
     if(eventManager.action["right2"]){
-        if(gameManager.player2.pos_x == 59){
+        if(gameManager.player2.pos_x == 60){
             var timer2 = setInterval(()=>{
-                gameManager.player2.pos_x+=1;
-                if(gameManager.player2.pos_x == 295) clearInterval(timer2);
-            },1)
+                gameManager.player2.pos_x+=2;
+                if(gameManager.player2.pos_x == 296) clearInterval(timer2);
+            },2)
         }
         eventManager.action["right2"]=false;
     }
 }
 
+function loadAudio(){
+    var mainAudio = new Audio("audio/play2.wav");
+    mainAudio.autoplay = true;
+    mainAudio.loop = true;
+}
+
 var velocity = 10;
 var canvas = document.getElementById("canvasId");
 var ctx = canvas.getContext("2d"); 
+//loadAudio();
 gameManager.loadAll();
 gameManager.play();
